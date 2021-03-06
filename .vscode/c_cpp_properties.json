@@ -1,0 +1,49 @@
+{
+    "configurations": [
+        {
+            "name": "Cortex",
+            "includePath": [
+                "src/",
+                "src/drivers/CMSIS_5/CMSIS/Core/Include",
+                "src/drivers/Microchip.SAMD11_DFP.2.4.56/include",
+                "src/drivers"
+            ],
+            "defines": [
+                "DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "DEBUG=1",
+                "__SAMD11D14AM__"
+            ],
+            "compilerPath": "arm-none-eabi-gcc",
+            "cStandard": "c99",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-arm",
+            "compilerArgs": [
+                "-x c",
+                "-mthumb",
+                "-ggdb",
+                "-D__SAMD11D14AM__",
+                "-fdata-sections",
+                "-ffunction-sections",
+                "-mlong-calls",
+                "-mcpu=cortex-m0plus",
+                "-std=gnu99",
+                "-DDEBUG",
+                "-O1",
+                "-Wall",
+                "-Wextra",
+                "-Wdouble-promotion",
+                "-Wstrict-prototypes",
+                "-Wfatal-errors",
+                "-Wfloat-equal",
+                "-Wshadow",
+                "-Wwrite-strings",
+                "-Wmissing-format-attribute",
+                "-Wunreachable-code",
+                "-Wcast-align"
+            ]
+        }
+    ],
+    "version": 4
+}
