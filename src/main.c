@@ -1,4 +1,15 @@
 #include "sam.h"
+#include "common.h"
+
+void vApplicationStackOverflowHook()
+{
+
+}
+
+void vApplicationTickHook()
+{
+
+}
 
 /**
 	@brief Configure System Clocks
@@ -31,6 +42,8 @@ void init_Clocks(void)
 	GCLK_REGS->GCLK_GENCTRL = (GCLK_GENCTRL_GENEN(1) | GCLK_GENCTRL_SRC_DFLL48M | GCLK_GENCTRL_ID(1));
 	GCLK_REGS->GCLK_GENDIV = (GCLK_GENDIV_DIV(1) | GCLK_GENDIV_ID(3));
 	GCLK_REGS->GCLK_GENCTRL = (GCLK_GENCTRL_GENEN(1) | GCLK_GENCTRL_SRC_OSC32K | GCLK_GENCTRL_ID(3));
+
+	SetSystemCoreClock(48000000);
 }
 
 void init_IO(void)

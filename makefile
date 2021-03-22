@@ -53,7 +53,7 @@ endif
 # list of source files
 C_SRCS +=  \
 src/drivers/Microchip.SAMD11_DFP.2.4.56/gcc/gcc/startup_samd11d14am.c \
-src/drivers/Microchip.SAMD11_DFP.2.4.56/gcc/system_samd11d14am.c \
+src/common.c \
 src/main.c
 
 # freertos source files
