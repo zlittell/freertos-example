@@ -56,6 +56,14 @@ src/drivers/Microchip.SAMD11_DFP.2.4.56/gcc/gcc/startup_samd11d14am.c \
 src/drivers/Microchip.SAMD11_DFP.2.4.56/gcc/system_samd11d14am.c \
 src/main.c
 
+# freertos source files
+C_SRCS += \
+src/drivers/FreeRTOS-Kernel/tasks.c \
+src/drivers/FreeRTOS-Kernel/queue.c \
+src/drivers/FreeRTOS-Kernel/list.c \
+src/drivers/FreeRTOS-Kernel/portable/gcc/ARM_CM0/port.c \
+src/drivers/FreeRTOS-Kernel/portable/MemMang/heap_4.c
+
 # convert c files to list of .o files
 OBJ += $(C_SRCS:.c=.o)
 OBJASPATH = $(addprefix $(BUILDDIR)/obj/, $(OBJ))
@@ -66,6 +74,11 @@ src/ \
 src/drivers/CMSIS_5/CMSIS/Core/Include \
 src/drivers/Microchip.SAMD11_DFP.2.4.56/include \
 src/drivers
+
+# freertos includes
+INC += \
+src/drivers/FreeRTOS-Kernel/include \
+src/drivers/FreeRTOS-Kernel/portable/gcc/ARM_CM0
 
 LD = "./src/drivers/Microchip.SAMD11_DFP.2.4.56/gcc/gcc/samd11d14am_flash.ld"
 
