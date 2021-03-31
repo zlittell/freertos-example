@@ -1,15 +1,14 @@
 #include "sam.h"
 #include "common.h"
+#include "FreeRTOS.h"
+#include "FreeRTOSConfig.h"
+#include "task.h"
 
-void vApplicationStackOverflowHook()
-{
-
-}
-
-void vApplicationTickHook()
-{
-
-}
+static const short stacksize_BlinkLED = configMINIMAL_STACK_SIZE;
+static const uint8_t priority_BlinkLED = 2;
+//static TaskHandle_T handle_BlinkLED;
+static const short stacksize_RotateCounter = configMINIMAL_STACK_SIZE;
+static const uint8_t priority_RotateCounter = 3;
 
 /**
 	@brief Configure System Clocks
@@ -53,10 +52,44 @@ void init_IO(void)
 	PORT_REGS->GROUP[0].PORT_OUTCLR = PORT_OUTCLR_OUTCLR(1u<<16);
 }
 
+void vBlinkLED(void *pvParameters)
+{
+	for (;;)
+	{
+		PORT_REGS->GROUP[0].PORT_OUTTGL = PORT_DIRSET_DIRSET(1u<<16);
+	}
+
+	vTaskDelete(NULL);
+}
+
+void vRotateCounter(void *pvParameters)
+{
+	uint8_t counter = 0;
+
+	for (;;)
+	{
+		if (counter < 255)
+		{
+			counter++;
+		}
+		else
+		{
+			counter = 0;
+		}
+	}
+}
+
 int main(void)
 {
 	init_Clocks();
 	init_IO();
+
+	xTaskCreate(vBlinkLED,
+				"LED Blinking Task",
+				stacksize_BlinkLED,
+				NULL,
+				priority_BlinkLED,
+				NULL);
 
 	for(;;){}
 }

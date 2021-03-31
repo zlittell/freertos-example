@@ -3,10 +3,12 @@
         {
             "name": "Cortex",
             "includePath": [
-                "src/",
-                "src/drivers/CMSIS_5/CMSIS/Core/Include",
-                "src/drivers/Microchip.SAMD11_DFP.2.4.56/include",
-                "src/drivers"
+                "${workspaceFolder}/src/",
+                "${workspaceFolder}/src/drivers/CMSIS_5/CMSIS/Core/Include",
+                "${workspaceFolder}/src/drivers/FreeRTOS-Kernel/include",
+                "${workspaceFolder}/src/drivers/FreeRTOS-Kernel/portable/gcc/ARM_CM0",
+                "${workspaceFolder}/src/drivers/Microchip.SAMD11_DFP.2.4.56/include",
+                "${workspaceFolder}/src/drivers"
             ],
             "defines": [
                 "DEBUG",
