@@ -61,6 +61,7 @@ C_SRCS += \
 src/drivers/FreeRTOS-Kernel/tasks.c \
 src/drivers/FreeRTOS-Kernel/queue.c \
 src/drivers/FreeRTOS-Kernel/list.c \
+src/drivers/FreeRTOS-Kernel/timers.c \
 src/drivers/FreeRTOS-Kernel/portable/gcc/ARM_CM0/port.c \
 src/drivers/FreeRTOS-Kernel/portable/MemMang/heap_4.c
 

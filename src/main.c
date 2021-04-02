@@ -1,7 +1,6 @@
 #include "sam.h"
 #include "common.h"
 #include "FreeRTOS.h"
-#include "FreeRTOSConfig.h"
 #include "task.h"
 
 static const short stacksize_BlinkLED = configMINIMAL_STACK_SIZE;
@@ -9,6 +8,8 @@ static const uint8_t priority_BlinkLED = 2;
 //static TaskHandle_T handle_BlinkLED;
 static const short stacksize_RotateCounter = configMINIMAL_STACK_SIZE;
 static const uint8_t priority_RotateCounter = 3;
+
+void vBlinkLED(void *pvParameters);
 
 /**
 	@brief Configure System Clocks
@@ -54,9 +55,11 @@ void init_IO(void)
 
 void vBlinkLED(void *pvParameters)
 {
+	(void) pvParameters;
 	for (;;)
 	{
-		PORT_REGS->GROUP[0].PORT_OUTTGL = PORT_DIRSET_DIRSET(1u<<16);
+		PORT_REGS->GROUP[0].PORT_OUTTGL = PORT_OUTTGL_OUTTGL(1u<<16);
+		vTaskDelay(50/portTICK_PERIOD_MS);
 	}
 
 	vTaskDelete(NULL);
@@ -64,6 +67,7 @@ void vBlinkLED(void *pvParameters)
 
 void vRotateCounter(void *pvParameters)
 {
+	(void) pvParameters;
 	uint8_t counter = 0;
 
 	for (;;)
@@ -91,5 +95,6 @@ int main(void)
 				priority_BlinkLED,
 				NULL);
 
+	vTaskStartScheduler();
 	for(;;){}
 }

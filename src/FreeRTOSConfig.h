@@ -51,7 +51,7 @@
 #define configTICK_RATE_HZ				( ( TickType_t ) 500 )
 #define configMAX_PRIORITIES			( 5 )
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 70 )
-#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 16000 ) )
+#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 2000 ) ) // 16000
 #define configMAX_TASK_NAME_LEN			( 5 )
 #define configUSE_TRACE_FACILITY		1
 #define configUSE_16_BIT_TICKS			0
@@ -60,7 +60,7 @@
 #define configQUEUE_REGISTRY_SIZE		8
 #define configCHECK_FOR_STACK_OVERFLOW	0 // 2
 #define configUSE_RECURSIVE_MUTEXES		1
-#define configUSE_MALLOC_FAILED_HOOK	1
+#define configUSE_MALLOC_FAILED_HOOK	0 // 1
 #define configUSE_APPLICATION_TASK_TAG	0
 #define configUSE_COUNTING_SEMAPHORES	1
 #define configUSE_QUEUE_SETS			1
@@ -69,8 +69,10 @@
 void vMainConfigureTimerForRunTimeStats( void );
 unsigned long ulMainGetRunTimeCounterValue( void );
 #define configGENERATE_RUN_TIME_STATS	0
-#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vMainConfigureTimerForRunTimeStats()
-#define portGET_RUN_TIME_COUNTER_VALUE() ulMainGetRunTimeCounterValue()
+#if (configGENERATE_RUN_TIME_STATS == 1)
+    #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vMainConfigureTimerForRunTimeStats()
+    #define portGET_RUN_TIME_COUNTER_VALUE() ulMainGetRunTimeCounterValue()
+#endif
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 			0
