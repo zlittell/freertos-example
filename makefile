@@ -62,7 +62,7 @@ src/drivers/FreeRTOS-Kernel/tasks.c \
 src/drivers/FreeRTOS-Kernel/queue.c \
 src/drivers/FreeRTOS-Kernel/list.c \
 src/drivers/FreeRTOS-Kernel/timers.c \
-src/drivers/FreeRTOS-Kernel/portable/gcc/ARM_CM0/port.c \
+src/drivers/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c \
 src/drivers/FreeRTOS-Kernel/portable/MemMang/heap_4.c
 
 # convert c files to list of .o files
@@ -79,7 +79,7 @@ src/drivers
 # freertos includes
 INC += \
 src/drivers/FreeRTOS-Kernel/include \
-src/drivers/FreeRTOS-Kernel/portable/gcc/ARM_CM0
+src/drivers/FreeRTOS-Kernel/portable/GCC/ARM_CM0
 
 LD = "./src/drivers/Microchip.SAMD11_DFP.2.4.56/gcc/gcc/samd11d14am_flash.ld"
 

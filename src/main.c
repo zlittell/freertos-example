@@ -6,8 +6,8 @@
 static const short stacksize_BlinkLED = configMINIMAL_STACK_SIZE;
 static const uint8_t priority_BlinkLED = 2;
 //static TaskHandle_T handle_BlinkLED;
-static const short stacksize_RotateCounter = configMINIMAL_STACK_SIZE;
-static const uint8_t priority_RotateCounter = 3;
+//static const short stacksize_RotateCounter = configMINIMAL_STACK_SIZE;
+//static const uint8_t priority_RotateCounter = 3;
 
 void vBlinkLED(void *pvParameters);
 
